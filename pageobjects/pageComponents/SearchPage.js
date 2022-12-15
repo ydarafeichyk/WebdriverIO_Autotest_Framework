@@ -21,19 +21,16 @@ class SearchPage extends BasePage {
   async indicatePrice(min, max) {
     await I.scroll(this.priceMin);
     await I.setValue(this.priceMin, 400);
-    await browser.pause(2000);
     await I.setValue(this.priceMax, 1000);
   }
   async indicateBrand() {
     await I.scroll(this.brandStels);
     await I.click(this.brandStels);
-    await browser.pause(2000);
   }
 
   async indicateClass() {
     await I.scroll(this.cityClass);
     await I.click(this.cityClass);
-    await browser.pause(2000);
   }
 
   async showSelected() {

@@ -9,9 +9,7 @@ class ShoppingCartPage extends BasePage {
     this.emptyMessage = '//h3';
   }
   async deleteProduct() {
-    await browser.pause(2000);
     await I.click(this.btnDel);
-    await browser.pause(2000);
   }
 }
 

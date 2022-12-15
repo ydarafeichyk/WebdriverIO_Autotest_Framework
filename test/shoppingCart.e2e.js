@@ -11,7 +11,6 @@ const shoppingCartPage = new ShoppingCartPage();
 describe('Shopping cart module testing', function () {
   beforeEach(async function () {
     mainPage.navigate('https://velosiped.by/');
-    await browser.pause(1000);
   });
 
   afterEach(async function () {

@@ -9,7 +9,7 @@ class CatalogPage extends BasePage {
     this.mountainVelo = "//div[@class='catalog-section-list-item']";
     this.cityVelo = "(//div[@class='catalog-section-list-item'])[2]";
     this.teenageVelo = "(//div[@class='catalog-section-list-item'])[4]";
-    this.linkQuickView = "//span[@class='getFastView']";
+    this.linkQuickView = "(//div[@class='productColImage'])[1]";
     this.btnInCart = "(//div[@class='appFastViewInformationColumn']//a)[2]";
     this.btnCart = "(//a[contains(@class,'addCart changeID')])[2]";
     this.btnGoToCart = "(//span[@class='text'])[2]";
@@ -27,25 +27,19 @@ class CatalogPage extends BasePage {
     this.amount = "(//input[@class='qty'])[2]";
   }
   async addQuickProduct() {
-    await browser.pause(2000);
-    await $(this.linkQuickView).waitForDisplayed();
+    await $(this.linkQuickView).waitForDisplayed({timeout:2000});
     await I.click(this.linkQuickView);
-    await browser.pause(2000);
     await I.click(this.btnInCart);
-    await browser.pause(2000);
   }
   async addProduct() {
     await $(this.linkCityVelo).waitForDisplayed();
     await I.click(this.linkCityVelo);
-    await browser.pause(2000);
     await I.click(this.btnCart);
-    await $(this.btnGoToCart).waitForClickable();
     await I.click(this.btnGoToCart);
   }
   async ordering() {
     await I.scroll(this.btn_Order);
     await I.click(this.btn_Order);
-    await browser.pause(2000);
   }
 }
 

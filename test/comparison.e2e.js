@@ -11,13 +11,11 @@ const catalogPage = new CatalogPage();
 describe('Testing the comparison module', function () {
   beforeEach(async function () {
     await mainPage.navigate('https://velosiped.by/');
-    await browser.pause(2000);
     await I.click(catalogPage.btnVelo);
     await I.click(catalogPage.teenageVelo);
     await I.click(catalogPage.linkCityVelo);
     await I.click(catalogPage.icon_addCompare);
     await I.click(comparisonPage.btn_Comparison);
-    await browser.pause(1000);
   });
 
   it('Check adding product to comparison', async function () {

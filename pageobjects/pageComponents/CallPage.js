@@ -9,19 +9,16 @@ class CallPage extends BasePage {
     this.input_Name = "(//input[@class='inputtext'])[2]";
     this.btnSendWebForm = "(//input[@class='sendWebFormDw'])[1]";
     this.callMessage = '.webFormMessageHeading';
+    this.messageWindow = 'div#webFormMessage_2>div';
   }
 
   async requestCall(phone, name) {
     await I.setValue(this.input_Phone, phone);
     await I.setValue(this.input_Name, name);
-    await browser.pause(2000);
-
     await browser.execute(function () {
       return document.querySelector('label.label-for').click();
     });
-    await browser.pause(5000);
     await I.click(this.btnSendWebForm);
-    await browser.pause(1000);
   }
 }
 

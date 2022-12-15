@@ -13,7 +13,6 @@ const reviewPage = new ReviewPage();
 describe('Testing communication module', function () {
   beforeEach(async function () {
     await mainPage.navigate('https://velosiped.by/');
-    await browser.pause(1000);
   });
   afterEach(async function () {
     await browser.reloadSession();
@@ -22,6 +21,7 @@ describe('Testing communication module', function () {
   it('Check the function order a call', async function () {
     await I.click(callPage.link_RequestCall);
     await callPage.requestCall('80171111111', 'test');
+    await $(callPage.messageWindow).waitForDisplayed();
     expect(await $(callPage.callMessage).getText()).to.contain('Сообщение отправлено');
   });
 

@@ -14,11 +14,9 @@ class ReviewPage extends BasePage {
     this.errorMessage = "//p[text()='Заполните все поля!']";
   }
   async addReview(advantage, disadvantage, impession, name) {
-    await browser.pause(2000);
     await browser.execute(function () {
       return document.querySelector("span[class='rating']").click();
     });
-    await browser.pause(2000);
     await I.click(this.experience);
     await I.setValue(this.input_advantage, advantage);
     await I.setValue(this.input_disadvantage, disadvantage);
@@ -28,7 +26,6 @@ class ReviewPage extends BasePage {
   }
 
   async addReviewWithautField(advantage, disadvantage, impession, name) {
-    await browser.pause(2000);
     await I.click(this.experience);
     await I.setValue(this.input_advantage, advantage);
     await I.setValue(this.input_disadvantage, disadvantage);

@@ -14,7 +14,6 @@ class ComparisonPage extends BasePage {
   async removeFromComparison() {
     await $(this.element_location).scrollIntoView();
     await I.click(this.iconDel);
-    await browser.pause(1000);
   }
 }
 

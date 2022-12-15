@@ -11,7 +11,6 @@ const orderPage = new OrderPage();
 describe('Ordering product', function () {
   beforeEach(async function () {
     await mainPage.navigate('https://velosiped.by/');
-    await browser.pause(2000);
   });
 
   it('Check the one-click order function is available', async function () {
@@ -20,6 +19,7 @@ describe('Ordering product', function () {
     await I.click(catalogPage.linkCityVelo);
     await I.click(catalogPage.btn_OneClick);
     await orderPage.buyInOneClick('test', '80171111111', 'It is test');
+    await (await $(orderPage.resultTitle)).waitForDisplayed();
     expect(await $(orderPage.resultTitle).getText()).to.contain('Ваш заказ успешно отправлен');
   });
 

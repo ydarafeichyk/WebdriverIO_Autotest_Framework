@@ -13,7 +13,6 @@ const catalogPage = new CatalogPage();
 describe('Search module testing', function () {
   beforeEach(async function () {
     await mainPage.navigate('https://velosiped.by/');
-    await browser.pause(2000);
   });
   afterEach(async function () {
     await browser.reloadSession();

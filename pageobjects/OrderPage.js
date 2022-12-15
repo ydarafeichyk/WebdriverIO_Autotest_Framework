@@ -29,7 +29,6 @@ class OrderPage extends BasePage {
     await I.setValue(this.input_message, message);
     await I.click(this.checkbox);
     await I.click(this.btnFormSubmit);
-    await browser.pause(2000);
   }
   async buyProduct(name, email, phone, address, message) {
     await I.click(this.btn_City);
@@ -44,7 +43,6 @@ class OrderPage extends BasePage {
     await I.setValue(this.input_comment, message);
     await I.click(this.btn_Next);
     await I.click(this.btn_Order);
-    await browser.pause(2000);
   }
 }
 
