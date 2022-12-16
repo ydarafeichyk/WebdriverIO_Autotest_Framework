@@ -19,7 +19,7 @@ class OrderPage extends BasePage {
     this.input_address = 'textarea#soa-property-7';
     this.input_comment = 'textarea#orderDescription';
     this.btn_Order = 'div#bx-soa-orderSave>a';
-    this.orderNumber = '(//td)[1]';
+    this.orderNumber = "(//table[@class='sale_order_full_table'])[1]";
   }
   async buyInOneClick(name, phone, message) {
     await I.setValue(this.input_FastName, name);

@@ -21,13 +21,11 @@ describe('testing location change', function () {
 
   it('Check location change', async function () {
     await locationPage.chooseLocation();
-    await $(locationPage.link_location).waitForDisplayed();
     expect(await $(locationPage.link_location).getText()).to.contain('Брест');
   });
 
   it('Check the location change by entering the location in the input field', async function () {
     await locationPage.chooseLocationByField();
-    await $(locationPage.link_location).waitForDisplayed();
     expect(await $(locationPage.link_location).getText()).to.contain('Лида');
   });
 });

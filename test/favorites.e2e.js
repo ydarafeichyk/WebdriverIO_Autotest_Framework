@@ -27,7 +27,6 @@ describe('Favorites module testing', function () {
 
   it('Check the field send product by email', async function () {
     await favoritesPage.sendEmail();
-    await $(favoritesPage.btn_SendEmail).waitForDisplayed();
     expect(await $(favoritesPage.btn_SendEmail).getText()).to.equal('Отправлено');
   });
 

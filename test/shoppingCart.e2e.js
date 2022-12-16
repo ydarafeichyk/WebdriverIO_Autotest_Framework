@@ -17,13 +17,6 @@ describe('Shopping cart module testing', function () {
     await browser.reloadSession();
   });
 
-  it('Check adding product to shopping cart', async function () {
-    await I.click(catalogPage.btnVelo);
-    await I.click(catalogPage.mountainVelo);
-    await catalogPage.addQuickProduct();
-    expect(await $(shoppingCartPage.cartMessage).getText()).to.contain('Товар добавлен в корзину');
-  });
-
   it('Check product removal from shopping cart', async function () {
     await I.click(catalogPage.btnVelo);
     await I.click(catalogPage.cityVelo);
@@ -38,5 +31,13 @@ describe('Shopping cart module testing', function () {
     await I.click(catalogPage.element);
     await I.click(catalogPage.btnPlus);
     expect(await $(catalogPage.amount).getValue()).to.equal('2');
+  });
+
+  it('Check adding product to shopping cart', async function () {
+    await I.click(catalogPage.btnVelo);
+    await I.click(catalogPage.mountainVelo);
+    await I.click(catalogPage.linkQuickView);
+    await I.click(catalogPage.btnCart);
+    expect(await $(catalogPage.linkCityVelo).isDisplayed()).to.equal(true);
   });
 });

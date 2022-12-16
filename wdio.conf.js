@@ -3,10 +3,10 @@ exports.config = {
 
   specs: ['./test/**/*.js'],
   exclude: [],
-  maxInstances: 10,
+  maxInstances: 1,
   capabilities: [
     {
-      maxInstances: 5,
+      maxInstances: 1,
       browserName: 'chrome',
       acceptInsecureCerts: true,
       'goog:chromeOptions': {

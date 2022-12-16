@@ -27,7 +27,6 @@ describe('Ordering product', function () {
     await I.click(catalogPage.btnVelo);
     await I.click(catalogPage.mountainVelo);
     await catalogPage.addQuickProduct();
-    await I.click(catalogPage.btnGoToCart);
     await catalogPage.ordering();
     await orderPage.buyProduct('FirstName', 'test@mail.ru', '80171111111', 'Address', 'It is test');
     expect(await $(orderPage.orderNumber).getText()).to.contain('Ваш заказ');

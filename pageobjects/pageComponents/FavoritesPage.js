@@ -15,6 +15,7 @@ class FavoritesPage extends BasePage {
     await I.scroll(this.input_Email);
     await I.setValue(this.input_Email, 'test2022project@mail.ru');
     await I.click(this.btn_SendEmail);
+    await browser.pause(3000);
   }
 }
 

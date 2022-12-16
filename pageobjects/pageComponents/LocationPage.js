@@ -17,12 +17,14 @@ class LocationPage extends BasePage {
     await I.click(this.link_city);
     await $(this.btn_geoLocation).waitForDisplayed({ timeout: 2000 });
     await I.click(this.btn_geoLocation);
+    await browser.pause(1000);
   }
 
   async chooseLocationByField() {
     await I.setValue(this.input_Location, 'Лида');
     await I.click(this.list_Location);
     await I.click(this.btn_geoLocation);
+    await browser.pause(1000);
   }
 }
 
