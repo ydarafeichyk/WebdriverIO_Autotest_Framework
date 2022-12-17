@@ -5,6 +5,10 @@ class MainPage extends BasePage {
     super();
     this.btnKnow = "//a[@class='cButton']";
   }
+
+  async clickOnBunner() {
+    await $(this.btnKnow).click();
+  }
 }
 
 module.exports = { MainPage };

@@ -20,8 +20,8 @@ class SearchPage extends BasePage {
 
   async indicatePrice(min, max) {
     await I.scroll(this.priceMin);
-    await I.setValue(this.priceMin, 400);
-    await I.setValue(this.priceMax, 1000);
+    await I.setValue(this.priceMin, min);
+    await I.setValue(this.priceMax, max);
   }
   async indicateBrand() {
     await I.scroll(this.brandStels);
@@ -34,7 +34,7 @@ class SearchPage extends BasePage {
   }
 
   async showSelected() {
-    await $(this.btn_Show).waitForDisplayed({ timeout: '5000' });
+    await $(this.btn_Show).waitForDisplayed();
     await I.click(this.btn_Show);
   }
 }

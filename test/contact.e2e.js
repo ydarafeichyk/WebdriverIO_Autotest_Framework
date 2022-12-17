@@ -3,7 +3,6 @@ const { MainPage } = require('../pageobjects/MainPage');
 const { CatalogPage } = require('../pageobjects/pageComponents/CatalogPage');
 const { CallPage } = require('../pageobjects/pageComponents/CallPage');
 const { ReviewPage } = require('../pageobjects/ReviewPage');
-const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const catalogPage = new CatalogPage();
@@ -19,26 +18,21 @@ describe('Testing communication module', function () {
   });
 
   it('Check the function order a call', async function () {
-    await I.click(callPage.link_RequestCall);
+    await callPage.clickOnCallLink();
     await callPage.requestCall('80171111111', 'test');
-    await $(callPage.messageWindow).waitForDisplayed();
     expect(await $(callPage.callMessage).getText()).to.contain('Сообщение отправлено');
   });
 
   it('Check function feedback', async function () {
-    await I.click(catalogPage.btnVelo);
-    await I.click(catalogPage.mountainVelo);
-    await I.click(catalogPage.linkVelo);
-    await I.click(catalogPage.link_AddReview);
+    await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.mountainVelo, catalogPage.linkVelo);
+    await catalogPage.clickAddReviewLink();
     await reviewPage.addReview('Fine', 'No', 'Well', 'Name');
     expect(await $(reviewPage.reviewMessage).getText()).to.contain('Отзыв добавлен');
   });
 
   it('Check the feedback function without filling in the required fields', async function () {
-    await I.click(catalogPage.btnVelo);
-    await I.click(catalogPage.mountainVelo);
-    await I.click(catalogPage.linkVelo);
-    await I.click(catalogPage.link_AddReview);
+    await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.mountainVelo, catalogPage.linkVelo);
+    await catalogPage.clickAddReviewLink();
     await reviewPage.addReviewWithautField('Fine', 'No', 'Well', 'Name');
     expect(await $(reviewPage.errorMessage).getText()).to.contain('Заполните все поля!');
   });

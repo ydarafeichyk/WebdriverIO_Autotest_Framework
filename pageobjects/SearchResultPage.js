@@ -3,7 +3,7 @@ const { BasePage } = require('./BasePage');
 class SearchResultPage extends BasePage {
   constructor() {
     super();
-    this.title_Search = '//h3';
+    this.title_Search = '//div[@class="rightColumn"]//h3';
   }
 }
 

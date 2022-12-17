@@ -12,6 +12,9 @@ class BaseElements {
     await $(element).scrollIntoView();
     await $(element).waitForClickable();
   }
+  async scrollToElement(element) {
+    await $(element).scrollIntoView();
+  }
 }
 
 module.exports = new BaseElements();

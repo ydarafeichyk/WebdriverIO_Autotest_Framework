@@ -15,7 +15,7 @@ describe('Banner testing', function () {
   });
 
   it('Check banner click', async function () {
-    await $(mainPage.btnKnow).click();
+    await mainPage.clickOnBunner();
     expect(await $(bannerPage.contentPage).getText()).to.contain('Распродажа');
   });
 });

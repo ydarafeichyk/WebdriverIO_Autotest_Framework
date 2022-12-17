@@ -2,7 +2,6 @@ const { expect } = require('chai');
 const { MainPage } = require('../pageobjects/MainPage');
 const { CatalogPage } = require('../pageobjects/pageComponents/CatalogPage');
 const { ShoppingCartPage } = require('../pageobjects/ShoppingCartPage');
-const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const catalogPage = new CatalogPage();
@@ -17,27 +16,22 @@ describe('Shopping cart module testing', function () {
     await browser.reloadSession();
   });
 
+  it('Check adding product to shopping cart', async function () {
+    await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.cityVelo, catalogPage.linkCityVelo);
+    await catalogPage.addProductToCart();
+    expect(await $(catalogPage.linkCityVelo).isDisplayed()).to.equal(true);
+  });
+
   it('Check product removal from shopping cart', async function () {
-    await I.click(catalogPage.btnVelo);
-    await I.click(catalogPage.cityVelo);
-    await catalogPage.addProduct();
+    await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.cityVelo, catalogPage.linkCityVelo);
+    await catalogPage.addProductToCart();
     await shoppingCartPage.deleteProduct();
     expect(await $(shoppingCartPage.emptyMessage).getText()).to.contain('В КОРЗИНЕ ПОКА ПУСТО');
   });
 
   it('check the change in the quantity of the product in the cart', async function () {
-    await I.click(catalogPage.btnSparePart);
-    await I.click(catalogPage.linkVeloCamera);
-    await I.click(catalogPage.element);
-    await I.click(catalogPage.btnPlus);
+    await catalogPage.selectProductFromCatalog(catalogPage.btnSparePart, catalogPage.linkVeloCamera, catalogPage.element);
+    await catalogPage.changeProductQuantity();
     expect(await $(catalogPage.amount).getValue()).to.equal('2');
-  });
-
-  it('Check adding product to shopping cart', async function () {
-    await I.click(catalogPage.btnVelo);
-    await I.click(catalogPage.mountainVelo);
-    await I.click(catalogPage.linkQuickView);
-    await I.click(catalogPage.btnCart);
-    expect(await $(catalogPage.linkCityVelo).isDisplayed()).to.equal(true);
   });
 });

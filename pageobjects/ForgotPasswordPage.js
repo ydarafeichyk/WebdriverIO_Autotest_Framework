@@ -3,7 +3,7 @@ const { BasePage } = require('./BasePage');
 class ForgotPasswordPage extends BasePage {
   constructor() {
     super();
-    this.passwordMessage = '//h1';
+    this.passwordMessage = '//div[@class="limiter"]//h1';
   }
 }
 

@@ -3,7 +3,7 @@ const { BasePage } = require('./BasePage');
 class BannerPage extends BasePage {
   constructor() {
     super();
-    this.contentPage = '//h1';
+    this.contentPage = 'div#main>div>h1';
   }
 }
 

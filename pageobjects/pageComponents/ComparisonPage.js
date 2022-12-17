@@ -12,8 +12,12 @@ class ComparisonPage extends BasePage {
   }
 
   async removeFromComparison() {
-    await $(this.element_location).scrollIntoView();
+    await I.scrollToElement(this.element_location);
     await I.click(this.iconDel);
+  }
+
+  async clickOnButtonComporison() {
+    await I.click(this.btn_Comparison);
   }
 }
 

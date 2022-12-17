@@ -32,7 +32,7 @@ exports.config = {
   logLevel: 'error',
   bail: 0,
   baseUrl: 'http://localhost',
-  waitforTimeout: 20000,
+  waitforTimeout: 10000,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
   services: ['chromedriver'],

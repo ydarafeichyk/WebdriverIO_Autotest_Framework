@@ -11,10 +11,18 @@ class LoginPage extends BasePage {
     this.btnSubmit = '.btn-primary.submit';
     this.linkForgot = '.forgot';
   }
+
+  async clickLoginButton() {
+    await I.click(this.btnLogin);
+  }
   async login(name, password) {
     await I.setValue(this.input_login, name);
     await I.setValue(this.input_password, password);
     await I.click(this.btnSubmit);
+  }
+
+  async clickOnForgotLink() {
+    await I.click(this.linkForgot);
   }
 }
 

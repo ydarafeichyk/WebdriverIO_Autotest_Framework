@@ -3,7 +3,6 @@ const { MainPage } = require('../pageobjects/MainPage');
 const { LoginPage } = require('../pageobjects/pageComponents/LoginPage');
 const { AuthorizationPage } = require('../pageobjects/AuthorizationPage');
 const { ForgotPasswordPage } = require('../pageobjects/ForgotPasswordPage');
-const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const loginPage = new LoginPage();
@@ -16,15 +15,14 @@ describe('Authorization module testing', function () {
   });
 
   it('Check login in with invalid credentials', async function () {
-    await I.click(loginPage.btnLogin);
+    await loginPage.clickLoginButton();
     await loginPage.login('login', '1111111');
     expect(await $(authorizationPage.authorizationMessage).getText()).to.contain('НЕВЕРНЫЙ ЛОГИН ИЛИ ПАРОЛЬ.');
   });
 
   it('Check password recovery', async function () {
-    await I.click(loginPage.btnLogin);
-    await I.setValue(loginPage.input_login, 'login');
-    await I.click(loginPage.linkForgot);
+    await loginPage.clickLoginButton();
+    await loginPage.clickOnForgotLink();
     expect(await $(forgotPasswordPage.passwordMessage).getText()).to.contain('Забыли пароль?');
   });
 });

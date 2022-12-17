@@ -2,7 +2,6 @@ const { expect } = require('chai');
 const { MainPage } = require('../pageobjects/MainPage');
 const { OrderPage } = require('../pageobjects/OrderPage');
 const { CatalogPage } = require('../pageobjects/pageComponents/CatalogPage');
-const I = require('../helpers/BaseElements');
 
 const mainPage = new MainPage();
 const catalogPage = new CatalogPage();
@@ -14,20 +13,16 @@ describe('Ordering product', function () {
   });
 
   it('Check the one-click order function is available', async function () {
-    await I.click(catalogPage.btnVelo);
-    await I.click(catalogPage.teenageVelo);
-    await I.click(catalogPage.linkCityVelo);
-    await I.click(catalogPage.btn_OneClick);
+    await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.teenageVelo, catalogPage.linkCityVelo);
+    await catalogPage.clickOnButtonOneClick();
     await orderPage.buyInOneClick('test', '80171111111', 'It is test');
-    await (await $(orderPage.resultTitle)).waitForDisplayed();
     expect(await $(orderPage.resultTitle).getText()).to.contain('Ваш заказ успешно отправлен');
   });
 
   it('Check the order function is available', async function () {
-    await I.click(catalogPage.btnVelo);
-    await I.click(catalogPage.mountainVelo);
-    await catalogPage.addQuickProduct();
-    await catalogPage.ordering();
+    await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.mountainVelo, catalogPage.linkCityVelo);
+    await catalogPage.goToCart();
+    await catalogPage.clickOnButtonOrder();
     await orderPage.buyProduct('FirstName', 'test@mail.ru', '80171111111', 'Address', 'It is test');
     expect(await $(orderPage.orderNumber).getText()).to.contain('Ваш заказ');
   });
