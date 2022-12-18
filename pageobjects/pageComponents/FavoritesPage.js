@@ -6,27 +6,28 @@ const I = require('../../helpers/BaseElements');
 class FavoritesPage extends BasePage {
   constructor() {
     super();
-    this.btn_Favorite = "(//span[@class='icon'])[2]";
-    this.input_Email = 'input#wishlist-form-email';
-    this.btn_SendEmail = 'a#wishlist-form-send';
-    this.btn_Send = "a[class='btn-simple btn-black btn-small wishlist-btn sended']";
-    this.icon_Del = "(//a[@class='removeFromWishlist'])[1]";
-    this.title_Wish = '//h3';
+    this.btnFavorite = "(//span[@class='icon'])[2]";
+    this.inputEmail = 'input#wishlist-form-email';
+    this.btnSendEmail = 'a#wishlist-form-send';
+    this.btnSend = "a[class='btn-simple btn-black btn-small wishlist-btn sended']";
+    this.iconDel = "(//a[@class='removeFromWishlist'])[1]";
+    this.titleWish = '//h3[text()="В избранном пока пусто"]';
   }
   async sendEmail(email, text = 'Отправлено') {
-    await I.scroll(this.input_Email);
-    await I.setValue(this.input_Email, email);
-    await I.click(this.btn_SendEmail);
-    await Waiters.waitTextInElement(this.btn_Send, text);
+    await I.scroll(this.inputEmail);
+    await $(this.inputEmail).waitForClicable();
+    await I.setValue(this.inputEmail, email);
+    await I.click(this.btnSendEmail);
+    await Waiters.waitTextInElement(this.btnSend, text);
   }
 
   async clickOnButtonFavorites() {
-    await I.click(this.btn_Favorite);
+    await I.click(this.btnFavorite);
   }
 
   async deleteProductFromFavorites() {
-    await I.click(this.icon_Del);
-    await $(this.title_Wish).waitForDisplayed();
+    await I.click(this.iconDel);
+    await $(this.titleWish).waitForDisplayed();
   }
 }
 

@@ -5,10 +5,10 @@ class ReviewPage extends BasePage {
   constructor() {
     super();
     this.experience = "//a[@data-id='5']";
-    this.input_advantage = "textarea[name='DIGNITY']";
-    this.input_disadvantage = "textarea[name='SHORTCOMINGS']";
-    this.input_comment = "textarea[name='COMMENT']";
-    this.input_name = "input[name='NAME']";
+    this.inputAdvantage = "textarea[name='DIGNITY']";
+    this.inputDisadvantage = "textarea[name='SHORTCOMINGS']";
+    this.inputComment = "textarea[name='COMMENT']";
+    this.inputName = "input[name='NAME']";
     this.btnSubmit = "//a[@class='submit']";
     this.reviewMessage = "//span[text()='Отзыв добавлен']";
     this.errorMessage = "//p[text()='Заполните все поля!']";
@@ -18,19 +18,19 @@ class ReviewPage extends BasePage {
       return document.querySelector("span[class='rating']").click();
     });
     await I.click(this.experience);
-    await I.setValue(this.input_advantage, advantage);
-    await I.setValue(this.input_disadvantage, disadvantage);
-    await I.setValue(this.input_comment, impession);
-    await I.setValue(this.input_name, name);
+    await I.setValue(this.inputAdvantage, advantage);
+    await I.setValue(this.inputDisadvantage, disadvantage);
+    await I.setValue(this.inputComment, impession);
+    await I.setValue(this.inputName, name);
     await I.click(this.btnSubmit);
   }
 
   async addReviewWithautField(advantage, disadvantage, impession, name) {
     await I.click(this.experience);
-    await I.setValue(this.input_advantage, advantage);
-    await I.setValue(this.input_disadvantage, disadvantage);
-    await I.setValue(this.input_comment, impession);
-    await I.setValue(this.input_name, name);
+    await I.setValue(this.inputAdvantage, advantage);
+    await I.setValue(this.inputDisadvantage, disadvantage);
+    await I.setValue(this.inputComment, impession);
+    await I.setValue(this.inputName, name);
     await I.click(this.btnSubmit);
   }
 }

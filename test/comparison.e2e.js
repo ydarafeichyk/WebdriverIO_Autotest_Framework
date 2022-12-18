@@ -21,6 +21,6 @@ describe('Testing the comparison module', function () {
 
   it('Check product removal from comparison', async function () {
     await comparisonPage.removeFromComparison();
-    expect(await $(comparisonPage.title_Compare).getText()).to.equal('В СПИСКЕ СРАВНЕНИЯ ПОКА ПУСТО');
+    expect(await $(comparisonPage.titleCompare).getText()).to.equal('В СПИСКЕ СРАВНЕНИЯ ПОКА ПУСТО');
   });
 });

@@ -1,4 +1,5 @@
 const { BasePage } = require('./BasePage');
+const I = require('../helpers/BaseElements');
 
 class MainPage extends BasePage {
   constructor() {
@@ -7,7 +8,7 @@ class MainPage extends BasePage {
   }
 
   async clickOnBunner() {
-    await $(this.btnKnow).click();
+    await I.click(this.btnKnow);
   }
 }
 

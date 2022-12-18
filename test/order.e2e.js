@@ -15,7 +15,7 @@ describe('Ordering product', function () {
   it('Check the one-click order function is available', async function () {
     await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.teenageVelo, catalogPage.linkCityVelo);
     await catalogPage.clickOnButtonOneClick();
-    await orderPage.buyInOneClick('test', '80171111111', 'It is test');
+    await orderPage.orderProductInOneClick('test', '80171111111', 'It is test');
     expect(await $(orderPage.resultTitle).getText()).to.contain('Ваш заказ успешно отправлен');
   });
 
@@ -23,7 +23,7 @@ describe('Ordering product', function () {
     await catalogPage.selectProductFromCatalog(catalogPage.btnVelo, catalogPage.mountainVelo, catalogPage.linkCityVelo);
     await catalogPage.goToCart();
     await catalogPage.clickOnButtonOrder();
-    await orderPage.buyProduct('FirstName', 'test@mail.ru', '80171111111', 'Address', 'It is test');
+    await orderPage.orderProduct('FirstName', 'test@mail.ru', '80171111111', 'Address', 'It is test');
     expect(await $(orderPage.orderNumber).getText()).to.contain('Ваш заказ');
   });
 });

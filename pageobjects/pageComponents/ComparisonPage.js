@@ -5,19 +5,19 @@ const I = require('../../helpers/BaseElements');
 class ComparisonPage extends BasePage {
   constructor() {
     super();
-    this.btn_Comparison = "//span[@class='icon']";
-    this.element_location = '.imgBlock';
+    this.btnComparison = "//span[@class='icon']";
+    this.elementLocation = '.imgBlock';
     this.iconDel = "ins[data-id='3441']";
-    this.title_Compare = '//h3';
+    this.titleCompare = '//h3';
   }
 
   async removeFromComparison() {
-    await I.scrollToElement(this.element_location);
+    await I.scroll(this.elementLocation);
     await I.click(this.iconDel);
   }
 
   async clickOnButtonComporison() {
-    await I.click(this.btn_Comparison);
+    await I.click(this.btnComparison);
   }
 }
 

@@ -1,5 +1,5 @@
 class Waiters {
-  static async waitTextInElement(selector, text, includes = false) {
+  static async waitTextInElement(selector, text, includes = true) {
     const actualText = await $(selector).getText();
     await browser.waitUntil(
       async () => (includes ? (await actualText).includes(text) : (await actualText).trim() === text),

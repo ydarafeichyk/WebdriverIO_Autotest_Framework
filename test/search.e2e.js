@@ -19,7 +19,7 @@ describe('Search module testing', function () {
 
   it('Check search by brand', async function () {
     await searchPage.searchByBrand('Stels');
-    expect(await $(searchResultPage.title_Search).getText()).to.contain('Товары по запросу: «Stels»');
+    expect(await $(searchResultPage.titleSearch).getText()).to.contain('Товары по запросу: «Stels»');
   });
 
   it('Check search by filter', async function () {

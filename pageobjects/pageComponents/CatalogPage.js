@@ -11,14 +11,14 @@ class CatalogPage extends BasePage {
     this.cityVelo = "//a[@href='/catalog/velosipedy/gorodskie/']//span";
     this.teenageVelo = "//a[@href='/catalog/velosipedy/podrostkovye_velosipedy/']//span";
     this.btnCart = "(//a[contains(@class,'addCart changeID')])[2]";
-    this.btnGoToCart = "//span[text()='Перейти в корзину']";
-    this.linkCityVelo = "//span[@class='middle']";
-    this.icon_AddWish = "//a[@class='elem addWishlist']";
-    this.icon_addCompare = 'a[class="elem addCompare changeID"]';
+    this.btnGoToCart = "(//span[@class='text'])[2]";
+    this.linkCityVelo = "(//span[@class='middle'])[1]";
+    this.iconAddWish = "//a[@class='elem addWishlist']";
+    this.iconaddCompare = 'a[class="elem addCompare changeID"]';
     this.linkVelo = "(//span[@class='middle'])[3]";
-    this.link_AddReview = '.labelDotted';
-    this.btn_OneClick = '(//a[@class="fastBack label changeID"])[2]';
-    this.btn_Order = '#newOrder';
+    this.linkAddReview = '.labelDotted';
+    this.btnOneClick = '(//a[@class="fastBack label changeID"])[2]';
+    this.btnOrder = '#newOrder';
     this.btnSparePart = 'ul#mainMenu>li:nth-of-type(3)';
     this.linkVeloCamera = "//a[@href='/catalog/zapchasti/velosipednye_kamery/']//span";
     this.veloCamera = "//span[text()='Велокамера RavX 28 AV']";
@@ -47,20 +47,21 @@ class CatalogPage extends BasePage {
     await I.click(this.btnGoToCart);
   }
   async clickOnButtonOrder() {
-    await I.scroll(this.btn_Order);
-    await I.click(this.btn_Order);
+    await I.scroll(this.btnOrder);
+    await $(this.btnOrder).waitForClicable();
+    await I.click(this.btnOrder);
   }
 
   async clickAddReviewLink() {
-    await I.click(this.link_AddReview);
+    await I.click(this.linkAddReview);
   }
 
   async AddWish() {
-    await I.click(this.icon_AddWish);
+    await I.click(this.iconAddWish);
   }
 
   async clickOnButtonOneClick() {
-    await I.click(this.btn_OneClick);
+    await I.click(this.btnOneClick);
   }
 
   async goToCatalogSection(section) {
@@ -68,7 +69,7 @@ class CatalogPage extends BasePage {
   }
 
   async addProductToCompare() {
-    await I.click(this.icon_addCompare);
+    await I.click(this.iconaddCompare);
   }
 }
 

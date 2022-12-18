@@ -10,10 +10,6 @@ class BaseElements {
 
   async scroll(element) {
     await $(element).scrollIntoView();
-    await $(element).waitForClickable();
-  }
-  async scrollToElement(element) {
-    await $(element).scrollIntoView();
   }
 }
 

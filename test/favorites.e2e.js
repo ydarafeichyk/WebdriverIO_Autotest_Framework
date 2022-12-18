@@ -24,11 +24,11 @@ describe('Favorites module testing', function () {
 
   it('Check the field send product by email', async function () {
     await favoritesPage.sendEmail('test2022project@mail.ru');
-    expect(await $(favoritesPage.btn_SendEmail).getText()).to.equal('Отправлено');
+    expect(await $(favoritesPage.btnSendEmail).getText()).to.equal('Отправлено');
   });
 
   it('Check product removal from favorites', async function () {
     await favoritesPage.deleteProductFromFavorites();
-    expect(await $(favoritesPage.title_Wish).getText()).to.equal('В ИЗБРАННОМ ПОКА ПУСТО');
+    expect(await $(favoritesPage.titleWish).getText()).to.equal('В ИЗБРАННОМ ПОКА ПУСТО');
   });
 });

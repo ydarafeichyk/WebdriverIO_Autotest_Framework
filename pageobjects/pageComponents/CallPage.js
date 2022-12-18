@@ -4,19 +4,20 @@ const I = require('../../helpers/BaseElements');
 class CallPage extends BasePage {
   constructor() {
     super();
-    this.link_RequestCall = '.openWebFormModal';
-    this.input_Phone = 'input[name="form_text_6"]';
-    this.input_Name = 'input[name="form_text_7"]';
+    this.linkRequestCall = '.openWebFormModal';
+    this.inputPhone = 'input[name="form_text_6"]';
+    this.inputName = 'input[name="form_text_7"]';
     this.btnSendWebForm = 'input[name="web_form_submit"]';
     this.callMessage = '.webFormMessageHeading';
     this.messageWindow = 'div#webFormMessage_2>div';
+    this.checkbox = 'label.label-for';
   }
   async clickOnCallLink() {
-    await I.click(this.link_RequestCall);
+    await I.click(this.linkRequestCall);
   }
   async requestCall(phone, name) {
-    await I.setValue(this.input_Phone, phone);
-    await I.setValue(this.input_Name, name);
+    await I.setValue(this.inputPhone, phone);
+    await I.setValue(this.inputName, name);
     await browser.execute(function () {
       return document.querySelector('label.label-for').click();
     });

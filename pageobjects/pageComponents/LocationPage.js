@@ -1,34 +1,38 @@
 const { BasePage } = require('../BasePage');
+const { CatalogPage } = require('./CatalogPage');
+const Waiters = require('../../helpers/waiters');
 
 const I = require('../../helpers/BaseElements');
+const catalogPage = new CatalogPage();
 
 class LocationPage extends BasePage {
   constructor() {
     super();
-    this.link_location = "a[class='user-geo-position-value-link']";
-    this.btn_geoLocation = 'a.geo-location-window-button';
-    this.input_Location = 'input.geo-location-window-search-input';
-    this.list_Location = 'a.geo-location-list-item-link';
+    this.linkLocation = "a[class='user-geo-position-value-link']";
+    this.btnGeoLocation = 'a.geo-location-window-button';
+    this.inputLocation = 'input.geo-location-window-search-input';
+    this.listLocation = 'a.geo-location-list-item-link';
   }
   async getLocation(name) {
     return `//span[text() = "${name}"]`;
   }
-  async chooseLocation(cityName) {
-    await $(await this.getLocation(cityName)).click();
-    await $(this.btn_geoLocation).waitForDisplayed();
-    await I.click(this.btn_geoLocation);
-    await browser.pause(50);
+  async chooseLocation(cityName, text) {
+    await I.click(await this.getLocation(cityName));
+    await $(this.btnGeoLocation).waitForDisplayed();
+    await I.click(this.btnGeoLocation);
+    await I.click(catalogPage.btnVelo);
+    await Waiters.waitTextInElement(this.linkLocation, text);
   }
-
-  async chooseLocationByField(city) {
-    await I.setValue(this.input_Location, city);
-    await I.click(this.list_Location);
-    await I.click(this.btn_geoLocation);
-    await browser.pause(50);
+  async chooseLocationByField(city, text) {
+    await I.setValue(this.inputLocation, city);
+    await I.click(this.listLocation);
+    await I.click(this.btnGeoLocation);
+    await I.click(catalogPage.btnVelo);
+    await Waiters.waitTextInElement(this.linkLocation, text);
   }
 
   async clickOnLocationLink() {
-    await I.click(this.link_location);
+    await I.click(this.linkLocation);
   }
 }
 

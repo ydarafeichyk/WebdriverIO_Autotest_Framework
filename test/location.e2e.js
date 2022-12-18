@@ -18,13 +18,13 @@ describe('testing location change', function () {
     expect(await browser.getTitle()).to.equal('Купить Велосипед в Минске | Velosiped.BY');
   });
 
-  it('Check location change', async function () {
-    await locationPage.chooseLocation('Брест');
-    expect(await $(locationPage.link_location).getText()).to.contain('Брест');
+  it('Check location change and save on another page', async function () {
+    await locationPage.chooseLocation('Брест', 'Брест');
+    expect(await $(locationPage.linkLocation).getText()).to.contain('Брест');
   });
 
-  it('Check the location change by entering the location in the input field', async function () {
-    await locationPage.chooseLocationByField('Лида');
-    expect(await $(locationPage.link_location).getText()).to.contain('Лида');
+  it('Check the location change by entering the location in the input field and save on another page', async function () {
+    await locationPage.chooseLocationByField('Лида', 'Лида');
+    expect(await $(locationPage.linkLocation).getText()).to.contain('Лида');
   });
 });
