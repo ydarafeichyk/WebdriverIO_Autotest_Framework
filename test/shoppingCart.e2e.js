@@ -30,7 +30,7 @@ describe('Shopping cart module testing', function () {
   });
 
   it('check the change in the quantity of the product in the cart', async function () {
-    await catalogPage.selectProductFromCatalog(catalogPage.btnSparePart, catalogPage.linkVeloCamera, catalogPage.element);
+    await catalogPage.selectProductFromCatalog(catalogPage.btnSparePart, catalogPage.linkVeloCamera, catalogPage.veloCamera);
     await catalogPage.changeProductQuantity();
     expect(await $(catalogPage.amount).getValue()).to.equal('2');
   });

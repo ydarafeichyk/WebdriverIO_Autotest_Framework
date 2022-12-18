@@ -5,7 +5,7 @@ const I = require('../../helpers/BaseElements');
 class ComparisonPage extends BasePage {
   constructor() {
     super();
-    this.btn_Comparison = "(//span[@class='icon'])[1]";
+    this.btn_Comparison = "//span[@class='icon']";
     this.element_location = '.imgBlock';
     this.iconDel = "ins[data-id='3441']";
     this.title_Compare = '//h3';

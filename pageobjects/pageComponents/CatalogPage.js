@@ -10,23 +10,20 @@ class CatalogPage extends BasePage {
     this.mountainVelo = "//a[@href='/catalog/velosipedy/gornye/']//span";
     this.cityVelo = "//a[@href='/catalog/velosipedy/gorodskie/']//span";
     this.teenageVelo = "//a[@href='/catalog/velosipedy/podrostkovye_velosipedy/']//span";
-    // this.linkQuickView = "(//div[@class='productColImage'])[1]";
-    // this.FastView = "(//span[@class='getFastView'])[1]";
-    // this.btnInCart = "(//div[@class='appFastViewInformationColumn']//a)[2]";
     this.btnCart = "(//a[contains(@class,'addCart changeID')])[2]";
     this.btnGoToCart = "//span[text()='Перейти в корзину']";
     this.linkCityVelo = "//span[@class='middle']";
     this.icon_AddWish = "//a[@class='elem addWishlist']";
-    this.icon_addCompare = "//a[contains(@class,'elem addCompare')";
+    this.icon_addCompare = 'a[class="elem addCompare changeID"]';
     this.linkVelo = "(//span[@class='middle'])[3]";
     this.link_AddReview = '.labelDotted';
     this.btn_OneClick = '(//a[@class="fastBack label changeID"])[2]';
     this.btn_Order = '#newOrder';
     this.btnSparePart = 'ul#mainMenu>li:nth-of-type(3)';
     this.linkVeloCamera = "//a[@href='/catalog/zapchasti/velosipednye_kamery/']//span";
-    // this.element = "(//div[@class='productColImage'])[1]";
+    this.veloCamera = "//span[text()='Велокамера RavX 28 AV']";
     this.btnPlus = "(//a[@class='plus'])[2]";
-    this.amount = "(//input[@class='qty'])[2]"; 
+    this.amount = "(//input[@class='qty'])[2]";
     this.cartIconWithProductNumber = "span[class='count']";
   }
 
