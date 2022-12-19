@@ -6,7 +6,7 @@ const I = require('../../helpers/BaseElements');
 class FavoritesPage extends BasePage {
   constructor() {
     super();
-    this.btnFavorite = "(//span[@class='icon'])[2]";
+    this.btnFavorite = "(//a[@href='/wishlist/'])[1]";
     this.inputEmail = 'input#wishlist-form-email';
     this.btnSendEmail = 'a#wishlist-form-send';
     this.btnSend = "a[class='btn-simple btn-black btn-small wishlist-btn sended']";
@@ -15,7 +15,6 @@ class FavoritesPage extends BasePage {
   }
   async sendEmail(email, text = 'Отправлено') {
     await I.scroll(this.inputEmail);
-    await $(this.inputEmail).waitForClicable();
     await I.setValue(this.inputEmail, email);
     await I.click(this.btnSendEmail);
     await Waiters.waitTextInElement(this.btnSend, text);

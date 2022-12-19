@@ -12,6 +12,7 @@ class ReviewPage extends BasePage {
     this.btnSubmit = "//a[@class='submit']";
     this.reviewMessage = "//span[text()='Отзыв добавлен']";
     this.errorMessage = "//p[text()='Заполните все поля!']";
+    this.starsRating = "span[class='rating']";
   }
   async addReview(advantage, disadvantage, impession, name) {
     await browser.execute(function () {

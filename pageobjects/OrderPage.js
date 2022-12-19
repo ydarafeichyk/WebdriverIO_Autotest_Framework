@@ -34,10 +34,8 @@ class OrderPage extends BasePage {
   async orderProduct(name, email, phone, address, message) {
     await I.click(this.btnCity);
     await I.scroll(this.btnNext);
-    await $(this.btnNext).waitForClickable();
     await I.click(this.btnNext);
     await I.scroll(this.btnNext);
-    await $(this.btnNext).waitForClickable();
     await I.click(this.btnNext);
     await I.setValue(this.inputFirstName, name);
     await I.setValue(this.inputEmail, email);

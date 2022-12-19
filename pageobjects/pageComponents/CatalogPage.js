@@ -48,7 +48,6 @@ class CatalogPage extends BasePage {
   }
   async clickOnButtonOrder() {
     await I.scroll(this.btnOrder);
-    await $(this.btnOrder).waitForClicable();
     await I.click(this.btnOrder);
   }
 
